@@ -38,8 +38,6 @@ const NewEmployeeForm = () => {
   }, [errors])
 
   const onSubmit: SubmitHandler<NewEmployeeValidationSchema> = async (data) => {
-    console.log(data)
-
     try {
       const employee = formatSendedObject(data)
       updateEmployees(employee)
