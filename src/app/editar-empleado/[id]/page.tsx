@@ -76,7 +76,7 @@ const page = ({ params }: { params: { id: string } }) => {
       Sueldo: data.salary,
     }
     try {
-      const response = await fetch(
+      await fetch(
         `https://sheet.best/api/sheets/10fe5e17-207b-4749-8c6c-e8473f871a26/ID/*${params.id}*`,
         {
           method: 'PATCH',
@@ -86,7 +86,7 @@ const page = ({ params }: { params: { id: string } }) => {
           body: JSON.stringify(employeeFormatted),
         }
       )
-      console.log(response)
+
       toast.success('Se ha modificado el usuario exitosamente!!')
     } catch (error) {
       console.error(error)
