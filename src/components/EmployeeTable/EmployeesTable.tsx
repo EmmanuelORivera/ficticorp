@@ -53,10 +53,13 @@ const EmployeesTable = () => {
       {
         <TableCell className="">
           <div className="flex">
-            <Button className="mr-4" variant={'secondary'}>
-              <EditIcon height={14} className="mr-1" />
-              Edit
-            </Button>
+            {/*  @ts-ignore */}
+            <Link href={`/editar-empleado/${employee.ID}`}>
+              <Button className="mr-4" variant={'secondary'}>
+                <EditIcon height={14} className="mr-1" />
+                Edit
+              </Button>
+            </Link>
             <Button
               onClick={() => handleDelete(employee)}
               variant={'destructive'}
