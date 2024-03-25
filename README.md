@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FictiCorp
 
-## Getting Started
+Bienvenido a **FictiCorp**, este proyecto es un CRUD el cual sirve para llevar el control del personal de la empresa.
 
-First, run the development server:
+## Demo Onlie
+Visita el sitio [https://ficticorp-g437npnnx-emmanuelorivera.vercel.app/](https://ficticorp-g437npnnx-emmanuelorivera.vercel.app/)
 
-```bash
+## Tabla de contenido
+
+- [Inicio](#Inicio)
+  - [Prerequisitos](#prerequisitos)
+  - [Instalacion](#instalacion)
+- [Uso](#uso)
+- [Caracteristicas](#caracteristicas)
+- [Agregar Empleado](#Agregar Empleado)
+
+## Inicio
+
+Para comenzar a usar FictiCorp en su máquina local, siga estos pasos:
+
+### Prerequisitos
+
+Asegúrese de tener los siguientes requisitos previos:
+
+- **Node.js**: Asegurarse de tener instalado node.
+- **npm**: npm se utiliza para la gestión de paquetes.
+- **Environment Variables**: Configurar el archivo `.env.local` en el archivo raiz del proyecto con las siguientes variables de entorno:
+  - `NEXT_PUBLIC_SHEET_ID`: 1B0oGOK19OBCfNG8UPwJBgj4FB_dyaNffh9FGhcS43gA.
+  - `SHEET_ID`: 1B0oGOK19OBCfNG8UPwJBgj4FB_dyaNffh9FGhcS43gA.
+
+
+### Instalacion
+1. Clonar el repositorio.
+2. Navegar a el directorio del proyecto.
+3. Instalar dependencias.
+   ```sh
+   npm install
+  
+### Uso
+1. Para iniciar la app ejecutar:
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Features
+1. @hookform/resolvers (Usado para poder usar zod y hookform)
+2. react-hook-form (Simplifica el uso de formularios)
+3. react-toastify (Componente usado para las notificaciones)
+4. zod (libreria para ayudar con las validaciones)
+5. uuid (Genera randoms uuids)
+6. radix-ui/react-icons (iconos 15 x 15)
+7. shadcn-ui (Componentes que se pueden copiar y pegar)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Sistema CRUD
+El sistema esta diseñado para que cumpla con los siguientes aspectos:
 
-## Learn More
+- Ver un listado de los empleados.
+- Agregar empleados al sistema.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ 
