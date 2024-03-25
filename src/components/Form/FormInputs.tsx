@@ -106,6 +106,7 @@ const FormInputs = ({
           name="salary"
           type="number"
           min={0}
+          step="any"
         />
       </InputWrapper>
     </>
