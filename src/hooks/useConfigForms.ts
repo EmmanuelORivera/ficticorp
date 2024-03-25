@@ -4,7 +4,7 @@ import NewEmployeeFormSchema, {
 import isObjectEmpty from '@/utils/isObjectEmpty'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
-import { useForm } from 'react-hook-form'
+import { useFieldArray, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
 export const useConfigForms = () => {
@@ -12,6 +12,7 @@ export const useConfigForms = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { disabled, errors },
   } = useForm<NewEmployeeValidationSchema>({
     resolver: zodResolver(NewEmployeeFormSchema),
@@ -31,5 +32,7 @@ export const useConfigForms = () => {
     handleSubmit,
     reset,
     disabled,
+    setValue,
+    useFieldArray,
   }
 }
