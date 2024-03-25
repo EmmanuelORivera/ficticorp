@@ -13,7 +13,7 @@ Visitar el Google Sheets [https://docs.google.com/spreadsheets/d/1B0oGOK19OBCfNG
   - [Prerequisitos](#prerequisitos)
   - [Instalacion](#instalacion)
 - [Uso](#uso)
-- [Caracteristicas](#caracteristicas)
+- [Features](#features)
 
 
 ## Inicio
