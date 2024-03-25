@@ -16,7 +16,6 @@ import { EditIcon, PlusCircle } from 'lucide-react'
 import Link from 'next/link'
 import { deleteEmployee } from '@/services/client/deleteEmployee'
 import { toast } from 'react-toastify'
-import { convertToNestedArray } from '@/utils/convertToNestedArray'
 
 const EmployeesTable = () => {
   const [employees, setEmployees] = useState<string[][]>([[]])
@@ -28,44 +27,47 @@ const EmployeesTable = () => {
       )
 
       const fetchedData = await response.json()
-      setEmployees(convertToNestedArray(fetchedData))
+
+      setEmployees(fetchedData)
     }
 
     fetchData()
   }, [])
 
-  const handleDelete = async (employee: string[]) => {
+  const handleDelete = async (employee: any) => {
     setEmployees((prev) => {
-      console.log(prev)
-      return prev
+      return prev.filter((x: any) => {
+        return x.ID !== employee.ID
+      })
     })
+    deleteEmployee(employee.ID)
     toast.success('El empleado ha sido eliminado')
   }
 
-  const tableHead = employees[0].map((header, index) => (
+  const tableHead = Object.keys(employees[0]).map((header, index) => (
     <TableHead key={index}>{header}</TableHead>
   ))
 
-  const tableRows = employees.slice(1).map((employee, rowIndex) => (
+  const tableRows = Object.values(employees).map((employee, rowIndex) => (
     <TableRow key={rowIndex}>
       {
-        // <TableCell className="">
-        //   <div className="flex">
-        //     <Button className="mr-4" variant={'secondary'}>
-        //       <EditIcon height={14} className="mr-1" />
-        //       Edit
-        //     </Button>
-        //     <Button
-        //       onClick={() => handleDelete(employee)}
-        //       variant={'destructive'}
-        //     >
-        //       <Cross1Icon className="mr-1" height={14} />
-        //       Eliminar
-        //     </Button>
-        //   </div>
-        // </TableCell>
+        <TableCell className="">
+          <div className="flex">
+            <Button className="mr-4" variant={'secondary'}>
+              <EditIcon height={14} className="mr-1" />
+              Edit
+            </Button>
+            <Button
+              onClick={() => handleDelete(employee)}
+              variant={'destructive'}
+            >
+              <Cross1Icon className="mr-1" height={14} />
+              Eliminar
+            </Button>
+          </div>
+        </TableCell>
       }
-      {employee.map((cell, cellIndex) => (
+      {Object.values(employee).map((cell, cellIndex) => (
         <TableCell key={cellIndex} className="min-w-48">
           {cell}
         </TableCell>
@@ -85,7 +87,7 @@ const EmployeesTable = () => {
         <TableCaption>Lista de los empleados registrados</TableCaption>
         <TableHeader>
           <TableRow>
-            {/* <TableHead>Controles</TableHead> */}
+            <TableHead>Controles</TableHead>
             {tableHead}
           </TableRow>
         </TableHeader>
