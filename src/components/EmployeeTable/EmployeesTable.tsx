@@ -26,9 +26,9 @@ const EmployeesTable = () => {
         'https://sheet.best/api/sheets/10fe5e17-207b-4749-8c6c-e8473f871a26'
       )
 
-      const fetchedData = await response.json()
+      const employees = await response.json()
 
-      setEmployees(fetchedData)
+      setEmployees(employees)
     }
 
     fetchData()
@@ -74,15 +74,11 @@ const EmployeesTable = () => {
       ))}
     </TableRow>
   ))
-
-  return (
-    <div>
-      <Link href="/nuevo-empleado">
-        <Button className="float-right">
-          <PlusCircle height={14} className="mr-1" />
-          Nuevo Empleado
-        </Button>
-      </Link>
+  const renderTable = () => {
+    if (employees.length === 0) {
+      return <div>No hay empleados registrados</div>
+    }
+    return (
       <Table className="my-4">
         <TableCaption>Lista de los empleados registrados</TableCaption>
         <TableHeader>
@@ -93,6 +89,18 @@ const EmployeesTable = () => {
         </TableHeader>
         <TableBody>{tableRows}</TableBody>
       </Table>
+    )
+  }
+
+  return (
+    <div>
+      <Link href="/nuevo-empleado">
+        <Button className="float-right">
+          <PlusCircle height={14} className="mr-1" />
+          Nuevo Empleado
+        </Button>
+      </Link>
+      {renderTable()}
     </div>
   )
 }
