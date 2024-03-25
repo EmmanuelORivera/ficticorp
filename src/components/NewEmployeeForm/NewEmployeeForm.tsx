@@ -1,21 +1,17 @@
 'use client'
 
-import { useEffect } from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { SubmitHandler } from 'react-hook-form'
 
 import { toast } from 'react-toastify'
 import { Separator } from '@/components/ui/separator'
-import NewEmployeeFormSchema, {
-  NewEmployeeValidationSchema,
-} from './NewEmployeeFormSchema'
-import { zodResolver } from '@hookform/resolvers/zod'
-import isObjectEmpty from '@/utils/isObjectEmpty'
+import { NewEmployeeValidationSchema } from './NewEmployeeFormSchema'
 import { updateEmployees } from '@/services/client/updateEmployees'
 import { formatSendedObject } from '@/utils/formatSendedObject'
 import FormHeader from '../Form/FormHeader'
 import { PersonIcon, PlusIcon } from '@radix-ui/react-icons'
 import FormWrapper from '../Form/FormWrapper'
 import FormInputs from '../Form/FormInputs'
+import { useConfigForms } from '@/hooks/useConfigForms'
 
 const renderHeader = () => (
   <>
@@ -30,23 +26,7 @@ const renderButtonBody = () => (
 )
 
 const NewEmployeeForm = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { disabled, errors },
-  } = useForm<NewEmployeeValidationSchema>({
-    resolver: zodResolver(NewEmployeeFormSchema),
-  })
-
-  useEffect(() => {
-    if (isObjectEmpty(errors)) {
-      return
-    }
-    const errorKeys = Object.keys(errors)
-    // @ts-ignore
-    toast.error(errors[errorKeys[0]].message)
-  }, [errors])
+  const { disabled, handleSubmit, register, reset } = useConfigForms()
 
   const onSubmit: SubmitHandler<NewEmployeeValidationSchema> = async (data) => {
     try {
