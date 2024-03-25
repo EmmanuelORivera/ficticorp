@@ -59,6 +59,9 @@ El sistema esta diseñado para que cumpla con los siguientes aspectos:
 
 - Ver un listado de los empleados.
 - Agregar empleados al sistema.
+- Eliminar empleados.
+- Editar empleados
+- (Los formularios tienen validacion usando las librerias Zod y react-hook-form)
 
 
 
