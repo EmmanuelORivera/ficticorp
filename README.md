@@ -14,7 +14,7 @@ Visitar el Google Sheets [https://docs.google.com/spreadsheets/d/1B0oGOK19OBCfNG
   - [Instalacion](#instalacion)
 - [Uso](#uso)
 - [Caracteristicas](#caracteristicas)
-- [Agregar Empleado](#Agregar Empleado)
+
 
 ## Inicio
 
